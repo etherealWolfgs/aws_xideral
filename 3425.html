@@ -1,497 +1,1005 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio · Genas</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ===== RESET & BASE ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0b0e1a; color: #eaeef2; overflow-x: hidden; }
-        a { color: #eaeef2; text-decoration: none; transition: color 0.3s; }
-        a:hover { color: #f0c27f; }
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 0.05em; }
-        h2 { font-size: 2.6rem; margin-bottom: 2rem; text-align: center; text-shadow: 0 0 20px rgba(240, 194, 127, 0.3); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
-        section { padding: 4rem 0; position: relative; z-index: 2; }
-        section:nth-of-type(odd) { background: rgba(11, 14, 26, 0.85); backdrop-filter: blur(4px); }
-        section:nth-of-type(even) { background: rgba(20, 25, 45, 0.85); backdrop-filter: blur(4px); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genaro Salvador Morales Paoli · Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ===== HERO ===== */
-        #hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0b0e1a; }
-        #hero canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 1; }
-        .hero-content { position: relative; z-index: 3; text-align: center; padding: 1.5rem; max-width: 900px; background: rgba(11, 14, 26, 0.4); backdrop-filter: blur(6px); border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7); }
-        .hero-content h1 { font-size: 4.5rem; font-weight: 900; background: linear-gradient(135deg, #f0c27f, #fc5c7d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 40px rgba(252, 92, 125, 0.3); margin-bottom: 0.5rem; }
-        .hero-content .subtitle { font-size: 1.6rem; font-weight: 300; color: #cdd9f0; letter-spacing: 0.15em; margin-bottom: 1.5rem; }
-        .hero-content .tagline { font-size: 1.1rem; color: #aab6d0; max-width: 600px; margin: 0 auto; line-height: 1.6; }
-        .avatar-wrapper { position: absolute; top: 2rem; right: 2rem; z-index: 10; width: 100px; height: 100px; border-radius: 50%; border: 3px solid #f0c27f; box-shadow: 0 0 30px rgba(240, 194, 127, 0.4), inset 0 0 30px rgba(240, 194, 127, 0.1); background: #1a1f2e; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.4s ease; }
-        .avatar-wrapper:hover { transform: scale(1.05) rotate(-3deg); }
-        .avatar-wrapper .placeholder-avatar { font-size: 3.5rem; font-weight: 700; color: #f0c27f; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 20px rgba(240, 194, 127, 0.5); user-select: none; }
+  :root {
+    --olive: #6B7A3E;
+    --olive-light: #8B9D52;
+    --olive-dark: #4A5528;
+    --black: #171714;
+    --black-soft: #1F1F1B;
+    --black-card: #262620;
+    --black-elev: #2E2E28;
+    --brick: #9B3B2A;
+    --brick-light: #B84A35;
+    --brick-dark: #6E2A1E;
+    --text: #E8E6DD;
+    --text-muted: #9C9A8F;
+    --border: rgba(232, 230, 221, 0.08);
+    --border-olive: rgba(107, 122, 62, 0.35);
+    --border-brick: rgba(155, 59, 42, 0.4);
+  }
 
-        /* ===== ABOUT ===== */
-        #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        #about .about-text p { font-size: 1.1rem; line-height: 1.8; color: #cdd9f0; margin-bottom: 1.2rem; }
-        #about .about-text strong { color: #f0c27f; }
-        #about .about-image { display: flex; justify-content: center; }
-        #about .about-image .code-icon { font-size: 8rem; opacity: 0.3; filter: drop-shadow(0 0 30px rgba(240, 194, 127, 0.2)); animation: float-simple 6s ease-in-out infinite; }
-        
-        @keyframes float-simple { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+  html { scroll-behavior: smooth; }
 
-        /* ===== PIXEL ART CSS ===== */
-        .pixel-decor { position: absolute; z-index: 1; opacity: 0.85; pointer-events: none; }
-        .decor-1 { top: 10%; left: 15%; font-size: 5px; }
-        .decor-2 { top: 35%; right: 15%; font-size: 6px; }
-        .decor-3 { bottom: 15%; left: 20%; font-size: 5px; }
-        .decor-4 { top: 25%; left: 10%; font-size: 5px; }
-        .decor-5 { bottom: 20%; right: 15%; font-size: 6px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        /* Animaciones Flotantes */
-        @keyframes pixel-float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0); }
-        }
-        .float-1 { animation: pixel-float 3s ease-in-out infinite; }
-        .float-2 { animation: pixel-float 4s ease-in-out infinite 1s; }
-        .float-3 { animation: pixel-float 3.5s ease-in-out infinite 0.5s; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
 
-        /* Base para dibujar píxeles */
-        .pixel-art { width: 1em; height: 1em; background: transparent; display: inline-block; }
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0.9rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(23, 23, 20, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--olive-light); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--olive-light); }
 
-        /* 1. Corazón 8x8 */
-        .pixel-heart {
-            box-shadow: 
-            2em 1em #fc5c7d, 3em 1em #fc5c7d, 5em 1em #fc5c7d, 6em 1em #fc5c7d,
-            1em 2em #fc5c7d, 2em 2em #fc5c7d, 3em 2em #fc5c7d, 4em 2em #fc5c7d, 5em 2em #fc5c7d, 6em 2em #fc5c7d, 7em 2em #fc5c7d,
-            1em 3em #fc5c7d, 2em 3em #fc5c7d, 3em 3em #fc5c7d, 4em 3em #fc5c7d, 5em 3em #fc5c7d, 6em 3em #fc5c7d, 7em 3em #fc5c7d,
-            2em 4em #fc5c7d, 3em 4em #fc5c7d, 4em 4em #fc5c7d, 5em 4em #fc5c7d, 6em 4em #fc5c7d,
-            3em 5em #fc5c7d, 4em 5em #fc5c7d, 5em 5em #fc5c7d,
-            4em 6em #fc5c7d;
-        }
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 25%, rgba(107, 122, 62, 0.20), transparent 45%),
+      radial-gradient(circle at 82% 75%, rgba(155, 59, 42, 0.16), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(139, 157, 82, 0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232, 230, 221, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 230, 221, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(circle at center, black 15%, transparent 72%);
+    mask-image: radial-gradient(circle at center, black 15%, transparent 72%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 940px;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-olive);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    color: var(--olive-light);
+    background: rgba(107, 122, 62, 0.10);
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.4rem, 6.2vw, 5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(120deg, var(--olive-light) 20%, var(--brick-light) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-role {
+    font-size: clamp(0.92rem, 1.6vw, 1.1rem);
+    color: var(--olive-light);
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 2.6rem;
+    line-height: 1.7;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    font-size: 0.94rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--olive);
+    color: #FAFAF5;
+    border-color: var(--olive-light);
+  }
+  .btn-primary:hover {
+    background: var(--olive-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(107, 122, 62, 0.35);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover {
+    border-color: var(--brick);
+    color: var(--brick-light);
+    transform: translateY(-2px);
+  }
 
-        /* 2. Poción 8x8 */
-        .pixel-potion {
-            box-shadow: 
-            3em 1em #d35400, 4em 1em #d35400,
-            3em 2em #d35400, 4em 2em #d35400,
-            2em 3em #ecf0f1, 5em 3em #ecf0f1,
-            2em 4em #ecf0f1, 3em 4em #9b59b6, 4em 4em #9b59b6, 5em 4em #ecf0f1,
-            1em 5em #ecf0f1, 2em 5em #9b59b6, 3em 5em #9b59b6, 4em 5em #9b59b6, 5em 5em #9b59b6, 6em 5em #ecf0f1,
-            1em 6em #ecf0f1, 2em 6em #9b59b6, 3em 6em #9b59b6, 4em 6em #9b59b6, 5em 6em #9b59b6, 6em 6em #ecf0f1,
-            2em 7em #ecf0f1, 3em 7em #ecf0f1, 4em 7em #ecf0f1, 5em 7em #ecf0f1;
-        }
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+  .scroll-hint .line {
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(to bottom, var(--olive-light), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.7; }
+    50% { transform: scaleY(0.5); opacity: 0.3; }
+  }
 
-        /* 3. Tarro de Magia 8x8 */
-        .pixel-jar {
-            box-shadow: 
-            2em 1em #f1c40f, 3em 1em #f1c40f, 4em 1em #f1c40f, 5em 1em #f1c40f,
-            2em 2em #f1c40f, 5em 2em #f1c40f,
-            1em 3em #f1c40f, 2em 3em #2ecc71, 3em 3em #2ecc71, 4em 3em #2ecc71, 5em 3em #2ecc71, 6em 3em #f1c40f,
-            1em 4em #f1c40f, 2em 4em #2ecc71, 3em 4em #2ecc71, 4em 4em #2ecc71, 5em 4em #2ecc71, 6em 4em #f1c40f,
-            2em 5em #f1c40f, 3em 5em #f1c40f, 4em 5em #f1c40f, 5em 5em #f1c40f;
-        }
+  /* ============ SECCIONES ============ */
+  section { padding: 6rem 2rem; position: relative; }
+  .container { max-width: 1180px; margin: 0 auto; }
 
-        /* Logos de Lenguajes en Pixel Art */
-        .pixel-py {
-            box-shadow: 2em 1em #3776ab, 3em 1em #3776ab, 4em 1em #3776ab, 1em 2em #3776ab, 4em 2em #3776ab, 1em 3em #3776ab, 2em 3em #3776ab, 3em 3em #3776ab, 4em 3em #3776ab, 5em 3em #ffd43b, 2em 4em #3776ab, 3em 4em #ffd43b, 4em 4em #ffd43b, 5em 4em #ffd43b, 6em 4em #ffd43b, 3em 5em #ffd43b, 6em 5em #ffd43b, 3em 6em #ffd43b, 4em 6em #ffd43b, 5em 6em #ffd43b;
-        }
-        .pixel-java {
-            box-shadow: 3em 1em #e67e22, 5em 1em #e67e22, 3em 2em #e67e22, 2em 4em #e74c3c, 3em 4em #e74c3c, 4em 4em #e74c3c, 5em 4em #e74c3c, 6em 4em #e74c3c, 2em 5em #e74c3c, 3em 5em #e74c3c, 4em 5em #e74c3c, 5em 5em #e74c3c, 6em 5em #e74c3c, 7em 5em #e74c3c, 2em 6em #e74c3c, 3em 6em #e74c3c, 4em 6em #e74c3c, 5em 6em #e74c3c, 6em 6em #e74c3c, 3em 7em #e74c3c, 4em 7em #e74c3c, 5em 7em #e74c3c;
-        }
-        .pixel-js {
-            box-shadow: 1em 1em #f1c40f, 2em 1em #f1c40f, 3em 1em #f1c40f, 4em 1em #f1c40f, 5em 1em #f1c40f, 6em 1em #f1c40f, 1em 2em #f1c40f, 2em 2em #f1c40f, 3em 2em #f1c40f, 4em 2em #f1c40f, 5em 2em #f1c40f, 6em 2em #f1c40f, 1em 3em #f1c40f, 2em 3em #f1c40f, 3em 3em #f1c40f, 4em 3em #f1c40f, 5em 3em #f1c40f, 6em 3em #f1c40f, 1em 4em #f1c40f, 2em 4em #000, 3em 4em #f1c40f, 4em 4em #000, 5em 4em #000, 6em 4em #f1c40f, 1em 5em #f1c40f, 2em 5em #000, 3em 5em #f1c40f, 4em 5em #f1c40f, 5em 5em #000, 6em 5em #f1c40f, 1em 6em #f1c40f, 2em 6em #000, 3em 6em #000, 4em 6em #f1c40f, 5em 6em #000, 6em 6em #000, 1em 7em #f1c40f, 2em 7em #f1c40f, 3em 7em #f1c40f, 4em 7em #f1c40f, 5em 7em #f1c40f, 6em 7em #f1c40f;
-        }
-        .pixel-html {
-            box-shadow: 1em 1em #e34f26, 2em 1em #e34f26, 3em 1em #e34f26, 4em 1em #e34f26, 5em 1em #e34f26, 6em 1em #e34f26, 1em 2em #e34f26, 2em 2em #fff, 3em 2em #e34f26, 4em 2em #fff, 5em 2em #fff, 6em 2em #e34f26, 1em 3em #e34f26, 2em 3em #fff, 3em 3em #fff, 4em 3em #e34f26, 5em 3em #fff, 6em 3em #e34f26, 1em 4em #e34f26, 2em 4em #e34f26, 3em 4em #fff, 4em 4em #e34f26, 5em 4em #fff, 6em 4em #e34f26, 2em 5em #e34f26, 3em 5em #fff, 4em 5em #fff, 5em 5em #e34f26, 3em 6em #e34f26, 4em 6em #e34f26;
-        }
-        .pixel-css {
-            box-shadow: 1em 1em #2965f1, 2em 1em #2965f1, 3em 1em #2965f1, 4em 1em #2965f1, 5em 1em #2965f1, 6em 1em #2965f1, 1em 2em #2965f1, 2em 2em #fff, 3em 2em #fff, 4em 2em #fff, 5em 2em #2965f1, 6em 2em #2965f1, 1em 3em #2965f1, 2em 3em #2965f1, 3em 3em #fff, 4em 3em #2965f1, 5em 3em #2965f1, 6em 3em #2965f1, 1em 4em #2965f1, 2em 4em #2965f1, 3em 4em #fff, 4em 4em #fff, 5em 4em #2965f1, 6em 4em #2965f1, 2em 5em #2965f1, 3em 5em #2965f1, 4em 5em #fff, 5em 5em #2965f1, 3em 6em #2965f1, 4em 6em #2965f1;
-        }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .section-title .accent { color: var(--brick-light); }
 
-        /* ===== ARCHIVO: MEMORY CARD (Proyectos) ===== */
-        .memory-wrapper { display: flex; flex-direction: column; align-items: center; margin-top: 2rem; position: relative; z-index: 5;}
-        .memory-hint { color: #aab6d0; font-size: 0.9rem; margin-bottom: 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; animation: float-simple 2s infinite; }
-        
-        .memory-card { width: 140px; height: 200px; background: #9ca0a8; border-radius: 12px 12px 4px 4px; position: relative; cursor: pointer; box-shadow: inset -4px -4px 10px rgba(0,0,0,0.3), inset 4px 4px 10px rgba(255,255,255,0.4), 0 15px 25px rgba(0,0,0,0.6); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s; display: flex; flex-direction: column; align-items: center; z-index: 10; }
-        .memory-card:hover { transform: translateY(-10px); box-shadow: 0 25px 35px rgba(240, 194, 127, 0.2); }
-        .memory-card.inserted { transform: translateY(20px); box-shadow: 0 5px 10px rgba(0,0,0,0.8); }
+  /* ============ SOBRE MÍ ============ */
+  #sobre-mi { background: var(--black-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+  .hl-olive { color: var(--olive-light); font-weight: 600; }
+  .hl-brick { color: var(--brick-light); font-weight: 600; }
 
-        .mc-top { width: 100%; height: 30px; display: flex; justify-content: center; padding-top: 8px; }
-        .mc-grips { width: 50px; height: 12px; background: repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px); }
-        .mc-label { width: 80%; height: 110px; background: #f4f4f4; border-radius: 4px; margin-top: 5px; box-shadow: inset 0 0 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; padding: 8px 5px; }
-        .mc-brand { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.65rem; color: #d32f2f; letter-spacing: 0.05em; }
-        .mc-blocks { font-size: 0.5rem; color: #333; font-weight: 700; margin-bottom: 15px; }
-        .mc-title-hand { font-family: cursive, sans-serif; color: #111; font-size: 1.2rem; transform: rotate(-5deg); font-weight: bold;}
-        .mc-bottom { width: 85%; height: 25px; background: #111; position: absolute; bottom: 0; border-radius: 2px 2px 0 0; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 3px; }
-        .mc-pins { width: 80%; height: 10px; background: repeating-linear-gradient(to right, #d4af37, #d4af37 3px, transparent 3px, transparent 5px); }
+  .about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .fact-card {
+    background: var(--black-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.2rem;
+    transition: all 0.25s ease;
+  }
+  .fact-card:hover {
+    border-color: var(--border-olive);
+    transform: translateY(-3px);
+    background: var(--black-elev);
+  }
+  .fact-card .fact-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--olive-light);
+    line-height: 1;
+    margin-bottom: 0.45rem;
+  }
+  .fact-card:nth-child(2) .fact-num,
+  .fact-card:nth-child(3) .fact-num { color: var(--brick-light); }
+  .fact-card .fact-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
 
-        .memory-data { width: 100%; max-width: 600px; max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out, margin-top 0.4s; opacity: 0; }
-        .memory-data.open { max-height: 800px; margin-top: 3rem; opacity: 1; }
-        .data-screen { background: rgba(15, 20, 35, 0.95); border: 2px solid #5a6482; border-radius: 12px; padding: 2rem; box-shadow: 0 0 30px rgba(90, 100, 130, 0.4); position: relative; }
-        .data-screen::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px); pointer-events: none; border-radius: 12px; }
-        .data-screen h4 { color: #f0c27f; text-align: center; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; letter-spacing: 0.1em; }
-        .data-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-        .data-list li a { display: block; background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-family: 'Orbitron', monospace; font-size: 0.9rem; color: #cdd9f0; border-left: 4px solid transparent; transition: all 0.3s; }
-        .data-list li a:hover { background: rgba(240, 194, 127, 0.1); border-left: 4px solid #f0c27f; transform: translateX(10px); color: #fff; }
-        .data-list li a span { color: #fc5c7d; font-weight: 700; margin-right: 10px; }
+  /* ============ TECNOLOGÍAS ============ */
+  .tech-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .tech-cat {
+    background: var(--black-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem;
+    transition: border-color 0.25s;
+  }
+  .tech-cat:hover { border-color: var(--border-olive); }
+  .tech-cat h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--olive-light);
+    margin-bottom: 1.1rem;
+    font-weight: 600;
+  }
+  .tech-cat:nth-child(even) h3 { color: var(--brick-light); }
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    padding: 0.42rem 0.95rem;
+    background: var(--black-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.84rem;
+    color: var(--text);
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .pill:hover {
+    border-color: var(--olive);
+    color: var(--olive-light);
+    transform: translateY(-2px);
+  }
+  .pill.brick:hover {
+    border-color: var(--brick);
+    color: var(--brick-light);
+  }
 
-        /* ===== TECNOLOGÍAS ===== */
-        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.8rem; margin-top: 1.5rem; position: relative; z-index: 5; }
-        .badge { background: linear-gradient(145deg, #1f263b, #141a2b); padding: 0.8rem 2rem; border-radius: 60px; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.08em; box-shadow: 0 8px 0 #0b0e1a, 0 10px 20px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.15s ease; display: inline-flex; align-items: center; gap: 1.2rem; color: #fff; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
-        .badge:hover { transform: translateY(-4px); box-shadow: 0 12px 0 #0b0e1a, 0 20px 30px rgba(0, 0, 0, 0.5); }
-        
-        /* Contenedor específico para que el pixel art no desborde el badge */
-        .icon-wrapper { width: 28px; height: 28px; display: flex; justify-content: flex-start; align-items: flex-start; }
-        .icon-wrapper .pixel-art { font-size: 3.5px; } /* Ajuste de escala para badges */
+  /* ============ PROYECTOS ============ */
+  #proyectos { background: var(--black-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+  }
+  .project-card {
+    background: var(--black-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    border-color: var(--border-olive);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45);
+  }
+  .project-preview {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--olive-dark), var(--black-elev));
+    border-bottom: 1px solid var(--border);
+  }
+  .project-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 28% 35%, rgba(139, 157, 82, 0.38), transparent 55%),
+      radial-gradient(circle at 72% 65%, rgba(155, 59, 42, 0.30), transparent 55%);
+    transition: opacity 0.4s;
+  }
+  .project-card:hover .project-preview::before { opacity: 0.75; }
+  .project-preview::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(23, 23, 20, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 23, 20, 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.6;
+  }
+  .preview-icon {
+    font-size: 3.4rem;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+    transition: transform 0.4s ease;
+  }
+  .project-card:hover .preview-icon { transform: scale(1.12) rotate(-4deg); }
+  .preview-label {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    padding: 0.28rem 0.75rem;
+    background: rgba(23, 23, 20, 0.88);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.68rem;
+    color: var(--olive-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    z-index: 3;
+  }
+  .project-body {
+    padding: 1.5rem 1.6rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .project-body h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    margin-bottom: 0.55rem;
+    letter-spacing: -0.01em;
+  }
+  .project-body p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.3rem;
+    flex: 1;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--olive-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: gap 0.25s, color 0.25s;
+    align-self: flex-start;
+  }
+  .project-link:hover { color: var(--brick-light); gap: 0.75rem; }
+  .project-link .arrow { transition: transform 0.25s; }
+  .project-link:hover .arrow { transform: translateX(2px); }
 
-        /* Colores específicos de border (estilo Pokémon) */
-        .badge-python { border-color: #ffd43b; }
-        .badge-java { border-color: #f89820; }
-        .badge-javascript { color: #1a1f2e; border-color: #000; text-shadow: none; background: linear-gradient(145deg, #f7df1e, #d4b81a); }
-        .badge-html { border-color: #f16529; }
-        .badge-css { border-color: #2965f1; }
+  /* ============ CERTIFICACIONES ============ */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem;
+  }
+  .cert-card {
+    background: var(--black-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem;
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    transition: all 0.28s ease;
+  }
+  .cert-card:hover {
+    border-color: var(--border-brick);
+    transform: translateY(-4px);
+    background: var(--black-card);
+    box-shadow: 0 14px 32px rgba(155, 59, 42, 0.15);
+  }
+  .cert-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(107, 122, 62, 0.28), rgba(155, 59, 42, 0.22));
+    border: 1px solid var(--border-olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+  }
+  .cert-info { flex: 1; }
+  .cert-info h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .cert-issuer {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+    display: block;
+  }
+  .cert-link {
+    font-size: 0.8rem;
+    color: var(--olive-light);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.25s, gap 0.25s;
+  }
+  .cert-link:hover { color: var(--brick-light); gap: 0.6rem; }
 
-        /* ===== CERTIFICACIONES ===== */
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
-        .cert-item { background: rgba(31, 38, 59, 0.7); backdrop-filter: blur(4px); padding: 1.8rem 1.2rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
-        .cert-item:hover { transform: scale(1.03); border-color: #f0c27f; box-shadow: 0 10px 30px rgba(240, 194, 127, 0.15); }
-        .cert-item .cert-icon { font-size: 3rem; margin-bottom: 0.6rem; display: block; }
-        .cert-item h4 { font-family: 'Orbitron', sans-serif; font-weight: 400; font-size: 1rem; color: #f0e6d0; margin-bottom: 0.3rem; }
-        .cert-item p { font-size: 0.85rem; color: #aab6d0; }
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--black-soft);
+    border-top: 1px solid var(--border);
+    padding: 4.5rem 2rem 2rem;
+  }
+  .footer-content {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.45rem;
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.02em;
+  }
+  .footer-brand h3 span { color: var(--olive-light); }
+  .footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+  .footer-social h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--olive-light);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+    transition: color 0.25s;
+  }
+  .footer-social a:hover { color: var(--olive-light); }
+  .footer-social .social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .footer-bottom {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+  .footer-bottom .heart { color: var(--brick-light); }
 
-        /* ===== FOOTER ===== */
-        footer { background: #060810; padding: 2.5rem 1.5rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.04); }
-        footer .footer-content { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-        footer .social-links { display: flex; gap: 1.8rem; font-size: 1.6rem; }
-        footer .social-links a { color: #aab6d0; transition: color 0.3s, transform 0.3s; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 1rem; font-weight: 600; }
-        footer .social-links a:hover { color: #f0c27f; transform: translateY(-3px); }
-        footer .copyright { font-size: 0.9rem; color: #6a7a9a; letter-spacing: 0.05em; }
-        footer .copyright span { color: #f0c27f; }
-        footer .heart { color: #fc5c7d; display: inline-block; animation: float-simple 1.8s ease-in-out infinite; }
+  /* ============ ANIMACIONES DE APARICIÓN ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content .subtitle { font-size: 1.2rem; }
-            .avatar-wrapper { width: 70px; height: 70px; top: 1rem; right: 1rem; }
-            .avatar-wrapper .placeholder-avatar { font-size: 2.5rem; }
-            #about .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            h2 { font-size: 2rem; }
-            .tech-grid { gap: 1rem; }
-            .badge { font-size: 0.9rem; padding: 0.5rem 1.2rem; gap: 0.8rem; }
-        }
-        @media (max-width: 500px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .avatar-wrapper { width: 60px; height: 60px; top: 0.8rem; right: 0.8rem; }
-            .avatar-wrapper .placeholder-avatar { font-size: 2rem; }
-        }
-    </style>
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    section { padding: 4.5rem 1.4rem; }
+    .hero { padding: 6rem 1.4rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    .footer-content { grid-template-columns: 1fr; gap: 2.2rem; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .nav { padding: 0.8rem 1.2rem; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn { justify-content: center; width: 100%; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .about-facts { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- ===== HERO ===== -->
-    <section id="hero">
-        <canvas id="starfield"></canvas>
-        <div class="hero-content">
-            <h1>Genaro Salvador</h1>
-            <p class="subtitle">✦ Desarrollador ✦</p>
-            <p class="tagline">Creo experiencias digitales con código, arte y pasión por la tecnología.</p>
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#hero" class="nav-logo">Genaro<span>.</span>MP</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#tecnologias">Tecnologías</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#certificaciones">Certificaciones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-badge">✦ Disponible para nuevos retos</span>
+    <h1>
+      Genaro Salvador<br>
+      <span class="gradient">Morales Paoli</span>
+    </h1>
+    <p class="hero-role">Desarrollador de Software · Full Stack</p>
+    <p class="hero-desc">
+      Construyo soluciones digitales combinando rigor científico, versatilidad técnica
+      y una curiosidad constante por el mundo tech.
+    </p>
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
+      <a href="#contacto" class="btn btn-ghost">Contactarme</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section id="sobre-mi">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">01 · Sobre mí</span>
+      <h2 class="section-title">Ciencia, código y <span class="accent">curiosidad</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Soy <strong>Genaro Salvador Morales Paoli</strong>, desarrollador de software
+          apasionado por el <span class="hl-olive">mundo tech</span>. Disfruto explorar
+          nuevas herramientas, lenguajes y paradigmas: para mí, cada tecnología nueva es
+          una oportunidad de ampliar la caja de herramientas con la que resuelvo problemas.
+        </p>
+        <p>
+          Me caracterizo por mi <span class="hl-olive">alta versatilidad</span>: me muevo
+          con comodidad entre el frontend, el backend, los datos y la infraestructura.
+          Esa flexibilidad me permite adaptarme rápido a distintos proyectos, equipos y
+          stacks tecnológicos sin perder el foco en el objetivo.
+        </p>
+        <p>
+          Pero si algo define mi forma de trabajar es el <span class="hl-brick">rigor</span>.
+          Aplico el mismo cuidado que exige la ciencia —medir, verificar, iterar y documentar—
+          a cada línea de código que escribo. Me obsesiona la <strong>calidad</strong>:
+          pruebas, buenas prácticas, código limpio y soluciones mantenibles que resistan
+          el paso del tiempo.
+        </p>
+        <p>
+          Creo firmemente que el mejor software nace de la intersección entre
+          <span class="hl-olive">la curiosidad técnica</span> y
+          <span class="hl-brick">el pensamiento crítico</span>.
+        </p>
+      </div>
+
+      <div class="about-facts reveal">
+        <div class="fact-card">
+          <div class="fact-num">+5</div>
+          <div class="fact-label">Años programando</div>
         </div>
-        <div class="avatar-wrapper">
-            <div class="placeholder-avatar">G</div>
+        <div class="fact-card">
+          <div class="fact-num">∞</div>
+          <div class="fact-label">Ganas de aprender</div>
         </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about">
-        <div class="container">
-            <h2>✦ Sobre mí</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        ¡Hola! Soy <strong>Genaro Salvador </strong>, Me gusta contribuir a desarrolar experiencias digitales rápidas y útiles.
-                        Me encanta combinar <strong>diseño</strong> y <strong>código</strong> para construir productos que marquen la diferencia.
-                    </p>
-                    <p>
-                        Actualmente me especializo en <strong>cloud computing</strong> y <strong>desarrollo frontend</strong>.
-                        Siempre estoy aprendiendo nuevas tecnologías y compartiendo conocimiento con la comunidad.
-                    </p>
-                </div>
-                <div class="about-image">
-                    <div class="code-icon">🚀</div>
-                </div>
-            </div>
+        <div class="fact-card">
+          <div class="fact-num">100%</div>
+          <div class="fact-label">Enfoque en calidad</div>
         </div>
-    </section>
-
-    <!-- ===== PROYECTOS (Carpeta Xideral Memory Card) ===== -->
-    <section id="proyectos">
-        <div class="container">
-            <h2>✦ Proyectos</h2>
-            
-            <!-- Iconos Decorativos Pixel Art Flotantes -->
-            <div class="pixel-decor decor-1 float-1"><div class="pixel-art pixel-heart"></div></div>
-            <div class="pixel-decor decor-2 float-2"><div class="pixel-art pixel-potion"></div></div>
-            <div class="pixel-decor decor-3 float-3"><div class="pixel-art pixel-jar"></div></div>
-            
-            <div class="memory-wrapper">
-                <p class="memory-hint">Carpeta Xideral - Toca la Memory Card</p>
-
-                <!-- Tarjeta de Memoria Xideral -->
-                <div class="memory-card" id="btnMemoryCard">
-                    <div class="mc-top">
-                        <div class="mc-grips"></div>
-                    </div>
-                    <div class="mc-label">
-                        <div class="mc-brand">XIDERAL CARD</div>
-                        <div class="mc-blocks">7 Projects</div>
-                        <div class="mc-title-hand">Xideral</div>
-                    </div>
-                    <div class="mc-bottom">
-                        <div class="mc-pins"></div>
-                    </div>
-                </div>
-
-                <!-- Contenedor Desplegable de Slots -->
-                <div class="memory-data" id="memoryData">
-                    <div class="data-screen">
-                        <h4>✦ Datos Guardados ✦</h4>
-                        <ul class="data-list">
-                            <li><a href="Xideral/Proyectos/Boto3_.html" target="_blank"><span>💾 SLOT 01:</span> Ejercicio 7 (Boto3)</a></li>
-                            <li><a href="Xideral/Proyectos/Chipocle_items.html" target="_blank"><span>💾 SLOT 02:</span> Ejercicio 6 (Chipocle)</a></li>
-                            <li><a href="Xideral/Proyectos/Calculadora_.html" target="_blank"><span>💾 SLOT 03:</span> Ejercicio 5 (Calculadora)</a></li>
-                            <li><a href="Xideral/Proyectos/PracticaKaggle.html" target="_blank"><span>💾 SLOT 04:</span> Ejercicio 4 (Kaggle)</a></li>
-                            <li><a href="Xideral/Proyectos/Problema.html" target="_blank"><span>💾 SLOT 05:</span> Ejercicio 3 (Problema)</a></li>
-                            <li><a href="Xideral/Proyectos/Untitled.html" target="_blank"><span>💾 SLOT 06:</span> Ejercicio 2 (Untitled)</a></li>
-                            <li><a href="Xideral/Proyectos/ejemplo.html" target="_blank"><span>💾 SLOT 07:</span> Ejemplo 1 (Desarrollo)</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="fact-card">
+          <div class="fact-num">24/7</div>
+          <div class="fact-label">Curiosidad activa</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- ===== TECNOLOGÍAS ===== -->
-    <section id="tecnologias">
-        <div class="container">
-            <h2>✦ Tecnologías</h2>
-            
-            <!-- Decoraciones Extra -->
-            <div class="pixel-decor decor-4 float-2"><div class="pixel-art pixel-potion"></div></div>
-            <div class="pixel-decor decor-5 float-1"><div class="pixel-art pixel-heart"></div></div>
+<!-- ============ TECNOLOGÍAS ============ -->
+<section id="tecnologias">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">02 · Tecnologías</span>
+      <h2 class="section-title">Mi stack <span class="accent">favorito</span></h2>
+    </div>
 
-            <div class="tech-grid">
-                <div class="badge badge-python">
-                    <div class="icon-wrapper float-1"><div class="pixel-art pixel-py"></div></div> Python
-                </div>
-                <div class="badge badge-java">
-                    <div class="icon-wrapper float-2"><div class="pixel-art pixel-java"></div></div> Java
-                </div>
-                <div class="badge badge-javascript">
-                    <div class="icon-wrapper float-3"><div class="pixel-art pixel-js"></div></div> JavaScript
-                </div>
-                <div class="badge badge-html">
-                    <div class="icon-wrapper float-1"><div class="pixel-art pixel-html"></div></div> HTML
-                </div>
-                <div class="badge badge-css">
-                    <div class="icon-wrapper float-2"><div class="pixel-art pixel-css"></div></div> CSS
-                </div>
-            </div>
+    <div class="tech-categories">
+      <div class="tech-cat reveal">
+        <h3>Lenguajes</h3>
+        <div class="tech-pills">
+          <span class="pill">Python</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Java</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Bash</span>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== CERTIFICACIONES ===== -->
-    <section id="certificaciones">
-        <div class="container">
-            <h2>✦ Certificaciones</h2>
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <span class="cert-icon">☁️</span>
-                    <h4>AWS Certified Developer</h4>
-                    <p>Amazon Web Services, 2025</p>
-                </div>
-                <div class="cert-item">
-                    <span class="cert-icon">🐍</span>
-                    <h4>Python Advanced</h4>
-                    <p>Instituto Tecnológico, 2024</p>
-                </div>
-                <div class="cert-item">
-                    <span class="cert-icon">📱</span>
-                    <h4>React & Redux</h4>
-                    <p>Meta, 2024</p>
-                </div>
-                <div class="cert-item">
-                    <span class="cert-icon">🔒</span>
-                    <h4>Cybersecurity Essentials</h4>
-                    <p>ISC², 2023</p>
-                </div>
-            </div>
+      <div class="tech-cat reveal">
+        <h3>Frontend</h3>
+        <div class="tech-pills">
+          <span class="pill brick">React</span>
+          <span class="pill brick">Vue</span>
+          <span class="pill brick">Next.js</span>
+          <span class="pill brick">HTML5</span>
+          <span class="pill brick">CSS3</span>
+          <span class="pill brick">Tailwind</span>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#" target="_blank" title="LinkedIn"><span>🔗</span> LinkedIn</a>
-                <a href="#" target="_blank" title="GitHub"><span>🐙</span> GitHub</a>
-            </div>
-            <div class="copyright">
-                2026 Realizado por <span>Genas</span>. Hecho con <span class="heart">❤️</span> y <span>☕</span>
-            </div>
+      <div class="tech-cat reveal">
+        <h3>Backend</h3>
+        <div class="tech-pills">
+          <span class="pill">Node.js</span>
+          <span class="pill">Django</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">Spring Boot</span>
+          <span class="pill">Express</span>
         </div>
-    </footer>
+      </div>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script>
-        (function () {
-            // ----- INTERACCIÓN MEMORY CARD -----
-            const memoryBtn = document.getElementById('btnMemoryCard');
-            const memoryData = document.getElementById('memoryData');
+      <div class="tech-cat reveal">
+        <h3>Datos & Cloud</h3>
+        <div class="tech-pills">
+          <span class="pill brick">PostgreSQL</span>
+          <span class="pill brick">MongoDB</span>
+          <span class="pill brick">AWS</span>
+          <span class="pill brick">Docker</span>
+          <span class="pill brick">Git</span>
+          <span class="pill brick">Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            if(memoryBtn && memoryData) {
-                memoryBtn.addEventListener('click', () => {
-                    memoryBtn.classList.toggle('inserted');
-                    memoryData.classList.toggle('open');
-                });
-            }
+<!-- ============ PROYECTOS ============ -->
+<section id="proyectos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">03 · Proyectos</span>
+      <h2 class="section-title">Cosas que he <span class="accent">construido</span></h2>
+    </div>
 
-            // ----- CANVAS: CIELO NOCTURNO -----
-            const canvas = document.getElementById('starfield');
-            const ctx = canvas.getContext('2d');
-            let W, H;
+    <div class="projects-grid">
 
-            function resize() {
-                const rect = canvas.parentElement.getBoundingClientRect();
-                canvas.width = rect.width;
-                canvas.height = rect.height;
-                W = canvas.width;
-                H = canvas.height;
-            }
-            window.addEventListener('resize', resize);
-            resize();
+      <!-- Proyecto 1 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">Web App</span>
+          <span class="preview-icon">✅</span>
+        </div>
+        <div class="project-body">
+          <h3>TaskFlow</h3>
+          <p>Gestor de tareas colaborativo con sincronización en tiempo real, tableros Kanban y notificaciones push.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            // --- Estrellas ---
-            const stars = [];
-            for (let i = 0; i < 400; i++) {
-                stars.push({
-                    x: Math.random() * W, y: Math.random() * H,
-                    radius: Math.random() * 2.2 + 0.4,
-                    baseAlpha: Math.random() * 0.6 + 0.4,
-                    speed: Math.random() * 0.02 + 0.005,
-                    phase: Math.random() * Math.PI * 2
-                });
-            }
+      <!-- Proyecto 2 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">Data Viz</span>
+          <span class="preview-icon">🌱</span>
+        </div>
+        <div class="project-body">
+          <h3>EcoData Dashboard</h3>
+          <p>Panel interactivo para visualizar datos ambientales en tiempo real, con gráficas dinámicas y filtros avanzados.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            // --- Galaxias (manchas) ---
-            const galaxies = [];
-            for (let i = 0; i < 4; i++) {
-                galaxies.push({
-                    x: Math.random() * W, y: Math.random() * H,
-                    radius: Math.random() * 250 + 100,
-                    color: `hsla(${Math.random() * 60 + 220}, 60%, 40%, ${Math.random() * 0.08 + 0.03})`
-                });
-            }
+      <!-- Proyecto 3 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">Educación</span>
+          <span class="preview-icon">🎓</span>
+        </div>
+        <div class="project-body">
+          <h3>CodeQuiz</h3>
+          <p>Plataforma de aprendizaje interactivo con retos de programación, evaluaciones automáticas y seguimiento de progreso.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            // --- Cometas ---
-            const comets = [];
-            for (let i = 0; i < 2; i++) {
-                comets.push({
-                    x: Math.random() * W, y: Math.random() * H,
-                    vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
-                    radius: Math.random() * 3 + 1,
-                    tail: [], maxTail: 20 + Math.floor(Math.random() * 20), life: 1
-                });
-            }
+      <!-- Proyecto 4 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">CLI Tool</span>
+          <span class="preview-icon">⚡</span>
+        </div>
+        <div class="project-body">
+          <h3>DevKit CLI</h3>
+          <p>Herramienta de línea de comandos para automatizar tareas repetitivas de desarrollo y configuración de proyectos.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            // --- Estrellas fugaces ---
-            const shootingStars = [];
-            function createShootingStar() {
-                const x = Math.random() * W * 0.8;
-                const y = Math.random() * H * 0.3;
-                const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.5;
-                const speed = 6 + Math.random() * 8;
-                shootingStars.push({
-                    x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-                    life: 1, decay: 0.008 + Math.random() * 0.012, trail: []
-                });
-            }
+      <!-- Proyecto 5 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">API</span>
+          <span class="preview-icon">🔐</span>
+        </div>
+        <div class="project-body">
+          <h3>AuthCore API</h3>
+          <p>Servicio de autenticación modular con JWT, OAuth2, roles y auditoría, listo para integrarse en cualquier backend.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            let shootingTimer = 0;
+      <!-- Proyecto 6 -->
+      <article class="project-card reveal">
+        <div class="project-preview">
+          <span class="preview-label">Open Source</span>
+          <span class="preview-icon">🧪</span>
+        </div>
+        <div class="project-body">
+          <h3>SciPy Lab</h3>
+          <p>Colección de notebooks y utilidades en Python para análisis científico de datos, experimentación y visualización.</p>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="project-link">
+            Ver proyecto <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
 
-            function draw() {
-                ctx.clearRect(0, 0, W, H);
-                const grad = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.8);
-                grad.addColorStop(0, '#141b33'); grad.addColorStop(0.6, '#0a0e1a'); grad.addColorStop(1, '#03050b');
-                ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+    </div>
+  </div>
+</section>
 
-                for (const g of galaxies) {
-                    const gradG = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.radius);
-                    gradG.addColorStop(0, g.color); gradG.addColorStop(1, 'transparent');
-                    ctx.fillStyle = gradG; ctx.beginPath(); ctx.arc(g.x, g.y, g.radius, 0, Math.PI * 2); ctx.fill();
-                }
+<!-- ============ CERTIFICACIONES ============ -->
+<section id="certificaciones">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">04 · Certificaciones</span>
+      <h2 class="section-title">Formación <span class="accent">continua</span></h2>
+    </div>
 
-                const time = Date.now() / 1000;
-                for (const s of stars) {
-                    const alpha = s.baseAlpha * (0.7 + 0.3 * Math.sin(time * s.speed * 10 + s.phase));
-                    ctx.beginPath(); ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`; ctx.fill();
-                    if (s.radius > 1.8) { ctx.shadowColor = 'rgba(255,255,255,0.2)'; ctx.shadowBlur = 12; ctx.fill(); ctx.shadowBlur = 0; }
-                }
+    <div class="certs-grid">
 
-                for (const c of comets) {
-                    c.x += c.vx; c.y += c.vy;
-                    if (c.x < 0 || c.x > W || c.y < 0 || c.y > H) {
-                        c.x = Math.random() * W; c.y = Math.random() * H;
-                        c.vx = (Math.random() - 0.5) * 0.15; c.vy = (Math.random() - 0.5) * 0.15; c.tail = [];
-                    }
-                    c.tail.push({x: c.x, y: c.y});
-                    if (c.tail.length > c.maxTail) c.tail.shift();
-                    for (let i = 0; i < c.tail.length; i++) {
-                        const alpha = i / c.tail.length * 0.8;
-                        const r = c.radius * (0.3 + 0.7 * (i / c.tail.length));
-                        ctx.beginPath(); ctx.arc(c.tail[i].x, c.tail[i].y, r, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(200, 220, 255, ${alpha * 0.7})`; ctx.fill();
-                    }
-                    ctx.beginPath(); ctx.arc(c.x, c.y, c.radius * 1.6, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'; ctx.fill();
-                    ctx.shadowColor = 'rgba(180, 200, 255, 0.8)'; ctx.shadowBlur = 25; ctx.fill(); ctx.shadowBlur = 0;
-                }
+      <div class="cert-card reveal">
+        <div class="cert-icon">☁️</div>
+        <div class="cert-info">
+          <h4>AWS Certified Developer – Associate</h4>
+          <span class="cert-issuer">Amazon Web Services · 2025</span>
+          <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
 
-                shootingTimer += 0.02;
-                if (shootingTimer > 0.6 && shootingStars.length < 3) { createShootingStar(); shootingTimer = 0; }
-                for (let i = shootingStars.length - 1; i >= 0; i--) {
-                    const ss = shootingStars[i]; ss.x += ss.vx; ss.y += ss.vy; ss.life -= ss.decay;
-                    ss.trail.push({x: ss.x, y: ss.y}); if (ss.trail.length > 25) ss.trail.shift();
-                    if (ss.trail.length > 1) {
-                        for (let j = 1; j < ss.trail.length; j++) {
-                            const alpha = (j / ss.trail.length) * ss.life * 0.9;
-                            ctx.beginPath(); ctx.moveTo(ss.trail[j - 1].x, ss.trail[j - 1].y); ctx.lineTo(ss.trail[j].x, ss.trail[j].y);
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`; ctx.lineWidth = 2.5 * (j / ss.trail.length); ctx.stroke();
-                        }
-                    }
-                    if (ss.life > 0.1) {
-                        ctx.beginPath(); ctx.arc(ss.x, ss.y, 2.5 * ss.life, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(255, 255, 255, ${ss.life * 0.9})`; ctx.fill();
-                        ctx.shadowColor = `rgba(255, 255, 255, ${ss.life * 0.6})`; ctx.shadowBlur = 30; ctx.fill(); ctx.shadowBlur = 0;
-                    }
-                    if (ss.life <= 0 || ss.x > W || ss.y > H) shootingStars.splice(i, 1);
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
+      <div class="cert-card reveal">
+        <div class="cert-icon">⚛️</div>
+        <div class="cert-info">
+          <h4>Meta Front-End Developer</h4>
+          <span class="cert-issuer">Meta · 2024</span>
+          <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
 
-            window.addEventListener('resize', () => {
-                const oldW = W, oldH = H; resize();
-                for (const s of stars) { s.x = (s.x / oldW) * W; s.y = (s.y / oldH) * H; }
-                for (const g of galaxies) { g.x = (g.x / oldW) * W; g.y = (g.y / oldH) * H; g.radius = g.radius * (W / oldW); }
-                for (const c of comets) { c.x = (c.x / oldW) * W; c.y = (c.y / oldH) * H; }
-            });
-        })();
-    </script>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📊</div>
+        <div class="cert-info">
+          <h4>Google Data Analytics</h4>
+          <span class="cert-issuer">Google · 2024</span>
+          <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐳</div>
+        <div class="cert-info">
+          <h4>Docker Certified Associate</h4>
+          <span class="cert-issuer">Docker Inc. · 2023</span>
+          <a href="https://www.docker.com/certification/" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐍</div>
+        <div class="cert-info">
+          <h4>Python for Data Science</h4>
+          <span class="cert-issuer">IBM · 2023</span>
+          <a href="https://www.coursera.org/learn/python-for-applied-data-science-ai" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🧭</div>
+        <div class="cert-info">
+          <h4>Scrum Foundation Professional</h4>
+          <span class="cert-issuer">CertiProf · 2022</span>
+          <a href="https://certiprof.com/" target="_blank" rel="noopener" class="cert-link">
+            Ver credencial →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER / CONTACTO ============ -->
+<footer id="contacto">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>Genaro Salvador <span>Morales Paoli</span></h3>
+      <p>
+        Desarrollador de software enfocado en calidad, versatilidad y aprendizaje continuo.
+        Si tienes un proyecto interesante, ¡hablemos!
+      </p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Encuéntrame en</h4>
+      <div class="social-list">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <span>🔗</span> LinkedIn
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener">
+          <span>🐙</span> GitHub
+        </a>
+        <a href="mailto:genaro@example.com">
+          <span>✉️</span> genaro@example.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Genaro Salvador Morales Paoli. Todos los derechos reservados.</span>
+    <span>Hecho con <span class="heart">❤</span> y mucho café</span>
+  </div>
+</footer>
+
+<!-- ============ SCRIPT DE ANIMACIÓN ============ -->
+<script>
+  (function () {
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealEls.forEach(function (el) { observer.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('visible'); });
+    }
+  })();
+</script>
+
 </body>
 </html>
