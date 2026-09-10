@@ -1,0 +1,189 @@
+/* ===== ARCHIVO: MEMORY CARD ===== */
+        .memory-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .memory-hint {
+            color: #aab6d0;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Diseño de la Memory Card */
+        .memory-card {
+            width: 140px;
+            height: 200px;
+            background: #9ca0a8; /* Gris clásico */
+            border-radius: 12px 12px 4px 4px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 
+                inset -4px -4px 10px rgba(0,0,0,0.3), 
+                inset 4px 4px 10px rgba(255,255,255,0.4),
+                0 15px 25px rgba(0,0,0,0.6);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 35px rgba(240, 194, 127, 0.2);
+        }
+        /* Estado "Insertado" */
+        .memory-card.inserted {
+            transform: translateY(20px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+        }
+
+        /* Detalles físicos de la tarjeta */
+        .mc-top {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+        }
+        .mc-grips {
+            width: 50px;
+            height: 12px;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.2) 2px,
+                rgba(0,0,0,0.2) 4px
+            );
+        }
+        .mc-label {
+            width: 80%;
+            height: 110px;
+            background: #f4f4f4;
+            border-radius: 4px;
+            margin-top: 5px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 5px;
+        }
+        .mc-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.65rem;
+            color: #d32f2f;
+            letter-spacing: 0.05em;
+        }
+        .mc-blocks {
+            font-size: 0.5rem;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .mc-title-hand {
+            font-family: cursive, sans-serif; /* Simula escritura a mano */
+            color: #111;
+            font-size: 1.2rem;
+            transform: rotate(-5deg);
+        }
+        .mc-bottom {
+            width: 85%;
+            height: 25px;
+            background: #111;
+            position: absolute;
+            bottom: 0;
+            border-radius: 2px 2px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 3px;
+        }
+        .mc-pins {
+            width: 80%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                to right,
+                #d4af37,
+                #d4af37 3px,
+                transparent 3px,
+                transparent 5px
+            );
+        }
+
+        /* Desplegable de Datos (Estilo BIOS / Pantalla) */
+        .memory-data {
+            width: 100%;
+            max-width: 500px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, margin-top 0.4s;
+            opacity: 0;
+        }
+        .memory-data.open {
+            max-height: 600px;
+            margin-top: 2rem;
+            opacity: 1;
+        }
+        .data-screen {
+            background: rgba(15, 20, 35, 0.95);
+            border: 2px solid #5a6482;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 0 30px rgba(90, 100, 130, 0.4);
+            position: relative;
+        }
+        .data-screen::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            pointer-events: none;
+            border-radius: 12px;
+        }
+        .data-screen h4 {
+            color: #f0c27f;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+        }
+        .data-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .data-list li a {
+            display: block;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            color: #cdd9f0;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+        }
+        .data-list li a:hover {
+            background: rgba(240, 194, 127, 0.1);
+            border-left: 4px solid #f0c27f;
+            transform: translateX(10px);
+            color: #fff;
+        }
+        .data-list li a span {
+            color: #fc5c7d;
+            font-weight: 700;
+            margin-right: 10px;
+        }

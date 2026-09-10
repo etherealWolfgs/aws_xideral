@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -15,20 +18,24 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0b0e1a;
             color: #eaeef2;
             overflow-x: hidden;
         }
+
         a {
             color: #eaeef2;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         a:hover {
             color: #f0c27f;
         }
+
         h1,
         h2,
         h3 {
@@ -36,26 +43,31 @@
             font-weight: 700;
             letter-spacing: 0.05em;
         }
+
         h2 {
             font-size: 2.6rem;
             margin-bottom: 2rem;
             text-align: center;
             text-shadow: 0 0 20px rgba(240, 194, 127, 0.3);
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+
         section {
             padding: 4rem 0;
             position: relative;
             z-index: 2;
         }
+
         section:nth-of-type(odd) {
             background: rgba(11, 14, 26, 0.85);
             backdrop-filter: blur(4px);
         }
+
         section:nth-of-type(even) {
             background: rgba(20, 25, 45, 0.85);
             backdrop-filter: blur(4px);
@@ -73,6 +85,7 @@
             background: #0b0e1a;
             /* fallback */
         }
+
         #hero canvas {
             position: absolute;
             top: 0;
@@ -82,6 +95,7 @@
             display: block;
             z-index: 1;
         }
+
         .hero-content {
             position: relative;
             z-index: 3;
@@ -94,6 +108,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
         }
+
         .hero-content h1 {
             font-size: 4.5rem;
             font-weight: 900;
@@ -104,6 +119,7 @@
             text-shadow: 0 0 40px rgba(252, 92, 125, 0.3);
             margin-bottom: 0.5rem;
         }
+
         .hero-content .subtitle {
             font-size: 1.6rem;
             font-weight: 300;
@@ -111,6 +127,7 @@
             letter-spacing: 0.15em;
             margin-bottom: 1.5rem;
         }
+
         .hero-content .tagline {
             font-size: 1.1rem;
             color: #aab6d0;
@@ -118,6 +135,7 @@
             margin: 0 auto;
             line-height: 1.6;
         }
+
         /* Foto en esquina */
         .avatar-wrapper {
             position: absolute;
@@ -136,14 +154,17 @@
             overflow: hidden;
             transition: transform 0.4s ease;
         }
+
         .avatar-wrapper:hover {
             transform: scale(1.05) rotate(-3deg);
         }
+
         .avatar-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .avatar-wrapper .placeholder-avatar {
             font-size: 3.5rem;
             font-weight: 700;
@@ -160,30 +181,37 @@
             gap: 3rem;
             align-items: center;
         }
+
         #about .about-text p {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #cdd9f0;
             margin-bottom: 1.2rem;
         }
+
         #about .about-text strong {
             color: #f0c27f;
         }
+
         #about .about-image {
             display: flex;
             justify-content: center;
         }
+
         #about .about-image .code-icon {
             font-size: 8rem;
             opacity: 0.3;
             filter: drop-shadow(0 0 30px rgba(240, 194, 127, 0.2));
             animation: float 6s ease-in-out infinite;
         }
+
         @keyframes float {
+
             0%,
             100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-20px);
             }
@@ -196,6 +224,7 @@
             gap: 2rem;
             margin-top: 1rem;
         }
+
         .cartucho {
             background: linear-gradient(145deg, #1f263b, #141a2b);
             border-radius: 20px 20px 12px 12px;
@@ -208,10 +237,12 @@
             align-items: center;
             text-align: center;
         }
+
         .cartucho:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 20px 50px rgba(240, 194, 127, 0.2), inset 0 0 0 1px rgba(240, 194, 127, 0.2);
         }
+
         .cartucho .portada {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -227,21 +258,25 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s;
         }
+
         .cartucho:hover .portada {
             filter: brightness(1.2);
             box-shadow: inset 0 0 60px rgba(240, 194, 127, 0.15);
         }
+
         .cartucho h3 {
             font-size: 1.3rem;
             margin-bottom: 0.4rem;
             color: #f0e6d0;
         }
+
         .cartucho p {
             font-size: 0.9rem;
             color: #aab6d0;
             line-height: 1.4;
             max-width: 200px;
         }
+
         .cartucho .etiqueta {
             margin-top: 0.8rem;
             font-size: 0.7rem;
@@ -262,6 +297,7 @@
             gap: 1.8rem;
             margin-top: 1.5rem;
         }
+
         .badge {
             background: linear-gradient(145deg, #1f263b, #141a2b);
             padding: 0.8rem 2rem;
@@ -279,32 +315,39 @@
             color: #fff;
             text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
         }
+
         .badge:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 0 #0b0e1a, 0 20px 30px rgba(0, 0, 0, 0.5);
         }
+
         /* Colores específicos (estilo Pokémon) */
         .badge-python {
             background: linear-gradient(145deg, #3776ab, #2b5b8a);
             border-color: #ffd43b;
         }
+
         .badge-java {
             background: linear-gradient(145deg, #b07219, #8a5b14);
             border-color: #f89820;
         }
+
         .badge-javascript {
             background: linear-gradient(145deg, #f7df1e, #d4b81a);
             color: #1a1f2e;
             border-color: #000;
         }
+
         .badge-html {
             background: linear-gradient(145deg, #e34f26, #b73d1a);
             border-color: #f16529;
         }
+
         .badge-css {
             background: linear-gradient(145deg, #264de4, #1a3a8a);
             border-color: #2965f1;
         }
+
         .badge .icon {
             font-size: 1.6rem;
             line-height: 1;
@@ -317,6 +360,7 @@
             gap: 1.8rem;
             margin-top: 1.5rem;
         }
+
         .cert-item {
             background: rgba(31, 38, 59, 0.7);
             backdrop-filter: blur(4px);
@@ -327,16 +371,19 @@
             transition: all 0.3s;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+
         .cert-item:hover {
             transform: scale(1.03);
             border-color: #f0c27f;
             box-shadow: 0 10px 30px rgba(240, 194, 127, 0.15);
         }
+
         .cert-item .cert-icon {
             font-size: 3rem;
             margin-bottom: 0.6rem;
             display: block;
         }
+
         .cert-item h4 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 400;
@@ -344,6 +391,7 @@
             color: #f0e6d0;
             margin-bottom: 0.3rem;
         }
+
         .cert-item p {
             font-size: 0.85rem;
             color: #aab6d0;
@@ -356,6 +404,7 @@
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
+
         footer .footer-content {
             max-width: 700px;
             margin: 0 auto;
@@ -364,11 +413,13 @@
             align-items: center;
             gap: 1rem;
         }
+
         footer .social-links {
             display: flex;
             gap: 1.8rem;
             font-size: 1.6rem;
         }
+
         footer .social-links a {
             color: #aab6d0;
             transition: color 0.3s, transform 0.3s;
@@ -378,28 +429,35 @@
             font-size: 1rem;
             font-weight: 600;
         }
+
         footer .social-links a:hover {
             color: #f0c27f;
             transform: translateY(-3px);
         }
+
         footer .copyright {
             font-size: 0.9rem;
             color: #6a7a9a;
             letter-spacing: 0.05em;
         }
+
         footer .copyright span {
             color: #f0c27f;
         }
+
         footer .heart {
             color: #fc5c7d;
             display: inline-block;
             animation: pulse 1.8s ease-in-out infinite;
         }
+
         @keyframes pulse {
+
             0%,
             100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.2);
             }
@@ -410,55 +468,68 @@
             .hero-content h1 {
                 font-size: 2.8rem;
             }
+
             .hero-content .subtitle {
                 font-size: 1.2rem;
             }
+
             .avatar-wrapper {
                 width: 70px;
                 height: 70px;
                 top: 1rem;
                 right: 1rem;
             }
+
             .avatar-wrapper .placeholder-avatar {
                 font-size: 2.5rem;
             }
+
             #about .about-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+
             h2 {
                 font-size: 2rem;
             }
+
             .proyectos-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
             .tech-grid {
                 gap: 1rem;
             }
+
             .badge {
                 font-size: 0.9rem;
                 padding: 0.5rem 1.2rem;
             }
         }
+
         @media (max-width: 500px) {
             .proyectos-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero-content h1 {
                 font-size: 2.2rem;
             }
+
             .avatar-wrapper {
                 width: 60px;
                 height: 60px;
                 top: 0.8rem;
                 right: 0.8rem;
             }
+
             .avatar-wrapper .placeholder-avatar {
                 font-size: 2rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ===== HERO ===== -->
@@ -484,7 +555,8 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p>
-                        ¡Hola! Soy <strong>Genaro Salvador </strong>, Me gusta contribuir a desarrolar experiencias digitales rápidas y útiles
+                        ¡Hola! Soy <strong>Genaro Salvador </strong>, Me gusta contribuir a desarrolar experiencias
+                        digitales rápidas y útiles
                         Me encanta combinar <strong>diseño</strong> y <strong>código</strong>
                         para construir productos que marquen la diferencia.
                     </p>
@@ -534,40 +606,87 @@
                     <h3>Ejercicio 2</h3>
                     <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Untitled.html"> Ejercicio 2</a>
                     <span class="etiqueta">Termiando</span>
-                  
+
                 </div>
-                  <div class="cartucho">
+                <div class="cartucho">
                     <div class="portada">📊</div>
                     <h3>Ejercicio 3</h3>
-                 <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Problema.html"> Ejercicio 3</a>
-                 <span class="etiqueta">Termiando</span>
-                 </div>
+                    <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Problema.html"> Ejercicio 3</a>
+                    <span class="etiqueta">Termiando</span>
+                </div>
                 <div class="cartucho">
                     <div class="portada">📊</div>
                     <h3>Ejercicio 4</h3>
-                <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/PracticaKaggle.html"> Ejercicio 4</a>
-                <span class="etiqueta">Termiando</span>
-                 </div>
+                    <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/PracticaKaggle.html"> Ejercicio
+                        4</a>
+                    <span class="etiqueta">Termiando</span>
+                </div>
                 <!-- Cartucho 4 -->
                 <div class="cartucho">
                     <div class="portada">📊</div>
                     <h3>Ejercicio 5</h3>
                     <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Calculadora_.html">Ejercicio 5</a>
                     <span class="etiqueta">Termiando</span>
-        </div>
+                </div>
                 <div class="cartucho">
                     <div class="portada">📊</div>
                     <h3>Ejercicio 6</h3>
-                    <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Chipocle_items.html">Ejercicio 6</a>
+                    <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Chipocle_items.html">Ejercicio
+                        6</a>
                     <span class="etiqueta">Termiando</span>
-        </div>
+                </div>
                 <div class="cartucho">
                     <div class="portada">📊</div>
                     <h3>Ejercicio 7</h3>
                     <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Boto3_.html">Ejercicio 7</a>
                     <span class="etiqueta">Termiando</span>
-        </div>
+                </div>
 
+    </section>
+    <!-- ===== ARCHIVO: MEMORY CARD ===== -->
+    <section id="archivo-memoria">
+        <div class="container">
+            <div class="memory-wrapper">
+                <p class="memory-hint">Toca la Memory Card para cargar los datos</p>
+
+                <!-- Tarjeta de Memoria -->
+                <div class="memory-card" id="btnMemoryCard">
+                    <div class="mc-top">
+                        <div class="mc-grips"></div>
+                    </div>
+                    <div class="mc-label">
+                        <div class="mc-brand">MEMORY CARD</div>
+                        <div class="mc-blocks">59 Blocks</div>
+                        <div class="mc-title-hand">Proyectos</div>
+                    </div>
+                    <div class="mc-bottom">
+                        <div class="mc-pins"></div>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Proyectos Desplegable -->
+                <div class="memory-data" id="memoryData">
+                    <div class="data-screen">
+                        <h4>✦ Datos Guardados ✦</h4>
+                        <ul class="data-list">
+                            <li><a href="Xideral/Proyectos/Boto3_.html" target="_blank"><span>💾 SLOT 01:</span>
+                                    Ejercicio 7 (Boto3)</a></li>
+                            <li><a href="Xideral/Proyectos/Chipocle_items.html" target="_blank"><span>💾 SLOT 02:</span>
+                                    Ejercicio 6 (Chipocle)</a></li>
+                            <li><a href="Xideral/Proyectos/Calculadora_.html" target="_blank"><span>💾 SLOT 03:</span>
+                                    Ejercicio 5 (Calculadora)</a></li>
+                            <li><a href="Xideral/Proyectos/PracticaKaggle.html" target="_blank"><span>💾 SLOT 04:</span>
+                                    Ejercicio 4 (Kaggle)</a></li>
+                            <li><a href="Xideral/Proyectos/Problema.html" target="_blank"><span>💾 SLOT 05:</span>
+                                    Ejercicio 3 (Problema)</a></li>
+                            <li><a href="Xideral/Proyectos/Untitled.html" target="_blank"><span>💾 SLOT 06:</span>
+                                    Ejercicio 2 (Untitled)</a></li>
+                            <!-- Puedes agregar más <li> aquí en el futuro -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ===== TECNOLOGÍAS ===== -->
@@ -632,7 +751,7 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script>
-        (function() {
+        (function () {
             // ----- CANVAS: CIELO NOCTURNO -----
             const canvas = document.getElementById('starfield');
             const ctx = canvas.getContext('2d');
@@ -766,7 +885,7 @@
                         c.tail = [];
                     }
                     // Cola
-                    c.tail.push({ x: c.x, y: c.y });
+                    c.tail.push({x: c.x, y: c.y});
                     if (c.tail.length > c.maxTail) c.tail.shift();
 
                     // Dibujar cola
@@ -803,7 +922,7 @@
                     ss.life -= ss.decay;
 
                     // Cola
-                    ss.trail.push({ x: ss.x, y: ss.y });
+                    ss.trail.push({x: ss.x, y: ss.y});
                     if (ss.trail.length > 25) ss.trail.shift();
 
                     // Dibujar trazo
@@ -862,4 +981,5 @@
         })();
     </script>
 </body>
+
 </html>
