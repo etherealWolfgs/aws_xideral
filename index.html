@@ -112,7 +112,6 @@
     50% { transform: scale(1.25); opacity: 0.15; }
   }
 
-  /* Etiqueta flotante — oculta por defecto, aparece en hover o brevemente al activarse */
   .side-nav-label {
     position: absolute;
     right: calc(100% + 14px);
@@ -138,7 +137,6 @@
     transform: translateY(-50%) translateX(0);
   }
 
-  /* Línea vertical entre los dots */
   .side-nav::before {
     content: '';
     position: absolute;
@@ -429,21 +427,22 @@
     transition: translate 0.35s ease;
   }
   .project-card:hover { translate: 0 -6px; }
+
   .project-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
   }
   .project-card.flipped .project-card-inner {
     transform: rotateY(180deg);
   }
+
   .project-face {
     position: absolute;
     inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -451,16 +450,34 @@
     background: var(--black-card);
     border: 1px solid var(--border);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .project-cover::before,
+  .project-cover::after,
+  .project-back-cover::before {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .project-front {
+    transform: rotateY(0deg) translateZ(1px);
+    z-index: 2;
+  }
+  .project-back {
+    transform: rotateY(180deg) translateZ(1px);
+    z-index: 1;
+    background: linear-gradient(160deg, #22221d 0%, #1a1a16 100%);
+    border-color: rgba(139, 157, 82, 0.25) !important;
+    padding: 1.5rem 1.5rem 1.6rem;
   }
   .project-card:hover .project-face {
     border-color: var(--border-olive);
     box-shadow: 0 22px 44px rgba(0, 0, 0, 0.5);
-  }
-  .project-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(160deg, #22221d 0%, #1a1a16 100%);
-    border-color: rgba(139, 157, 82, 0.25) !important;
-    padding: 1.5rem 1.5rem 1.6rem;
   }
   .project-card:hover .project-back {
     border-color: rgba(139, 157, 82, 0.55) !important;
@@ -574,27 +591,33 @@
 
   /* Info en reverso */
   .project-back-cover {
-    height: 100px;
+    height: 90px;
     border-radius: 10px;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--olive-dark), var(--black-elev));
+    margin-bottom: 1.1rem;
+    background: linear-gradient(135deg, rgba(74, 85, 40, 0.5), rgba(23, 23, 20, 0.9));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(139, 157, 82, 0.2);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
   }
   .project-back-cover::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(circle at 30% 40%, rgba(139, 157, 82, 0.3), transparent 60%),
+      radial-gradient(circle at 30% 40%, rgba(139, 157, 82, 0.35), transparent 60%),
       radial-gradient(circle at 70% 60%, rgba(155, 59, 42, 0.25), transparent 60%);
+    pointer-events: none;
   }
-  .project-back-cover span { position: relative; z-index: 2; }
+  .project-back-cover span {
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  }
 
   .project-back h3 {
     font-family: 'Space Grotesk', sans-serif;
@@ -1017,30 +1040,123 @@
 
     <div class="projects-grid">
 
-      <!-- Proyecto 1 -->
+      <!-- Proyecto 1 — Ejercicio 2 -->
+      <article class="project-card reveal" data-project>
+        <div class="project-card-inner">
+          <div class="project-face project-front">
+            <div class="project-cover">
+              <span class="cover-label">Ejercicio</span>
+              <span class="cover-icon">🧩</span>
+              <span class="cover-tag">AWS · Xideral</span>
+            </div>
+            <div class="project-front-info">
+              <h3>Ejercicio 2 · Untitled</h3>
+              <p>Primeros pasos del bootcamp: fundamentos de desarrollo web.</p>
+              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
+            </div>
+          </div>
+          <div class="project-face project-back">
+            <div class="project-back-cover"><span>🧩</span></div>
+            <h3>Ejercicio 2 · Untitled</h3>
+            <p>
+              Ejercicio introductorio del bootcamp AWS/Xideral. Primeros pasos con
+              estructura HTML, estilos y lógica básica de programación web.
+            </p>
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Untitled.html"
+               target="_blank" rel="noopener" class="btn-view">
+              Ver proyecto →
+            </a>
+            <span class="back-close-hint">Click para cerrar</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 2 — Ejercicio 3 -->
+      <article class="project-card reveal" data-project>
+        <div class="project-card-inner">
+          <div class="project-face project-front">
+            <div class="project-cover">
+              <span class="cover-label">Ejercicio</span>
+              <span class="cover-icon">🧠</span>
+              <span class="cover-tag">Lógica</span>
+            </div>
+            <div class="project-front-info">
+              <h3>Ejercicio 3 · Problema</h3>
+              <p>Resolución de un problema algorítmico con lógica de programación.</p>
+              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
+            </div>
+          </div>
+          <div class="project-face project-back">
+            <div class="project-back-cover"><span>🧠</span></div>
+            <h3>Ejercicio 3 · Problema</h3>
+            <p>
+              Ejercicio de resolución de problemas aplicando lógica de programación:
+              descomposición, diseño de algoritmo e implementación paso a paso.
+            </p>
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Problema.html"
+               target="_blank" rel="noopener" class="btn-view">
+              Ver proyecto →
+            </a>
+            <span class="back-close-hint">Click para cerrar</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 3 — Ejercicio 4 -->
+      <article class="project-card reveal" data-project>
+        <div class="project-card-inner">
+          <div class="project-face project-front">
+            <div class="project-cover">
+              <span class="cover-label">Data Science</span>
+              <span class="cover-icon">📊</span>
+              <span class="cover-tag">Kaggle · Python</span>
+            </div>
+            <div class="project-front-info">
+              <h3>Ejercicio 4 · Práctica Kaggle</h3>
+              <p>Análisis de datos usando un dataset real de Kaggle.</p>
+              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
+            </div>
+          </div>
+          <div class="project-face project-back">
+            <div class="project-back-cover"><span>📊</span></div>
+            <h3>Ejercicio 4 · Práctica Kaggle</h3>
+            <p>
+              Práctica de análisis y visualización de datos con Python sobre un dataset
+              de Kaggle: limpieza, exploración y obtención de conclusiones.
+            </p>
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/PracticaKaggle.html"
+               target="_blank" rel="noopener" class="btn-view">
+              Ver proyecto →
+            </a>
+            <span class="back-close-hint">Click para cerrar</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto 4 — Ejercicio 5 -->
       <article class="project-card reveal" data-project>
         <div class="project-card-inner">
           <div class="project-face project-front">
             <div class="project-cover">
               <span class="cover-label">Web App</span>
-              <span class="cover-icon">✅</span>
-              <span class="cover-tag">Java · Spring</span>
+              <span class="cover-icon">🧮</span>
+              <span class="cover-tag">JavaScript · DOM</span>
             </div>
             <div class="project-front-info">
-              <h3>TaskFlow</h3>
-              <p>Gestor de tareas colaborativo con sincronización en tiempo real.</p>
+              <h3>Ejercicio 5 · Calculadora</h3>
+              <p>Calculadora funcional con operaciones básicas y manejo del DOM.</p>
               <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
             </div>
           </div>
           <div class="project-face project-back">
-            <div class="project-back-cover"><span>✅</span></div>
-            <h3>TaskFlow</h3>
+            <div class="project-back-cover"><span>🧮</span></div>
+            <h3>Ejercicio 5 · Calculadora</h3>
             <p>
-              Aplicación web de gestión de tareas con tableros Kanban, autenticación,
-              y notificaciones. Backend en Spring Boot, base de datos relacional y
-              despliegue en AWS con Docker.
+              Calculadora interactiva construida desde cero. Ejercicio práctico de
+              lógica de programación, manejo de eventos y manipulación del DOM.
             </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Calculadora_.html"
+               target="_blank" rel="noopener" class="btn-view">
               Ver proyecto →
             </a>
             <span class="back-close-hint">Click para cerrar</span>
@@ -1048,30 +1164,30 @@
         </div>
       </article>
 
-      <!-- Proyecto 2 -->
+      <!-- Proyecto 5 — Ejercicio 6 -->
       <article class="project-card reveal" data-project>
         <div class="project-card-inner">
           <div class="project-face project-front">
             <div class="project-cover">
               <span class="cover-label">Data Viz</span>
-              <span class="cover-icon">🌱</span>
-              <span class="cover-tag">Python · AWS S3</span>
+              <span class="cover-icon">🌯</span>
+              <span class="cover-tag">Dataset · Python</span>
             </div>
             <div class="project-front-info">
-              <h3>EcoData Dashboard</h3>
-              <p>Panel interactivo para visualizar datos ambientales en tiempo real.</p>
+              <h3>Ejercicio 6 · Chipotle Items</h3>
+              <p>Análisis del menú de Chipotle a partir de un dataset real.</p>
               <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
             </div>
           </div>
           <div class="project-face project-back">
-            <div class="project-back-cover"><span>🌱</span></div>
-            <h3>EcoData Dashboard</h3>
+            <div class="project-back-cover"><span>🌯</span></div>
+            <h3>Ejercicio 6 · Chipotle Items</h3>
             <p>
-              Dashboard que consume datos ambientales desde una API propia, los procesa
-              con Python y los muestra en gráficas dinámicas. Almacenamiento en S3 y
-              despliegue con Docker en EC2.
+              Análisis exploratorio del dataset público "Chipotle Items" para extraer
+              información de precios, categorías y popularidad de productos del menú.
             </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Chipocle_items.html"
+               target="_blank" rel="noopener" class="btn-view">
               Ver proyecto →
             </a>
             <span class="back-close-hint">Click para cerrar</span>
@@ -1079,123 +1195,30 @@
         </div>
       </article>
 
-      <!-- Proyecto 3 -->
+      <!-- Proyecto 6 — Ejercicio 7 -->
       <article class="project-card reveal" data-project>
         <div class="project-card-inner">
           <div class="project-face project-front">
             <div class="project-cover">
-              <span class="cover-label">Educación</span>
-              <span class="cover-icon">🎓</span>
-              <span class="cover-tag">Java · BD relacional</span>
+              <span class="cover-label">Cloud</span>
+              <span class="cover-icon">☁️</span>
+              <span class="cover-tag">AWS · Boto3</span>
             </div>
             <div class="project-front-info">
-              <h3>CodeQuiz</h3>
-              <p>Plataforma de aprendizaje interactivo con retos de programación.</p>
+              <h3>Ejercicio 7 · Boto3</h3>
+              <p>Automatización con Boto3, el SDK de AWS para Python.</p>
               <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
             </div>
           </div>
           <div class="project-face project-back">
-            <div class="project-back-cover"><span>🎓</span></div>
-            <h3>CodeQuiz</h3>
+            <div class="project-back-cover"><span>☁️</span></div>
+            <h3>Ejercicio 7 · Boto3</h3>
             <p>
-              Aplicación educativa con retos de programación, evaluaciones automáticas
-              y seguimiento de progreso del usuario. Desarrollada en Java con Spring,
-              persistencia en base de datos relacional y pruebas unitarias con Mockito.
+              Ejercicio de automatización en la nube usando Boto3 para interactuar
+              con servicios de AWS: crear, listar y gestionar recursos desde Python.
             </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
-              Ver proyecto →
-            </a>
-            <span class="back-close-hint">Click para cerrar</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Proyecto 4 -->
-      <article class="project-card reveal" data-project>
-        <div class="project-card-inner">
-          <div class="project-face project-front">
-            <div class="project-cover">
-              <span class="cover-label">CLI Tool</span>
-              <span class="cover-icon">⚡</span>
-              <span class="cover-tag">Python · Linux</span>
-            </div>
-            <div class="project-front-info">
-              <h3>DevKit CLI</h3>
-              <p>Herramienta de línea de comandos para automatizar tareas de desarrollo.</p>
-              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
-            </div>
-          </div>
-          <div class="project-face project-back">
-            <div class="project-back-cover"><span>⚡</span></div>
-            <h3>DevKit CLI</h3>
-            <p>
-              Utilidad de línea de comandos escrita en Python y Bash que automatiza
-              tareas repetitivas como scaffold de proyectos, gestión de entornos y
-              scripts de despliegue en Linux.
-            </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
-              Ver proyecto →
-            </a>
-            <span class="back-close-hint">Click para cerrar</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Proyecto 5 -->
-      <article class="project-card reveal" data-project>
-        <div class="project-card-inner">
-          <div class="project-face project-front">
-            <div class="project-cover">
-              <span class="cover-label">API</span>
-              <span class="cover-icon">🔐</span>
-              <span class="cover-tag">Spring · JWT</span>
-            </div>
-            <div class="project-front-info">
-              <h3>AuthCore API</h3>
-              <p>Servicio de autenticación modular con JWT y roles.</p>
-              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
-            </div>
-          </div>
-          <div class="project-face project-back">
-            <div class="project-back-cover"><span>🔐</span></div>
-            <h3>AuthCore API</h3>
-            <p>
-              API REST de autenticación con Spring Boot, JWT, roles y auditoría.
-              Base de datos relacional, pruebas con Mockito y despliegue en EC2 con Docker.
-              Lista para integrarse en cualquier backend.
-            </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
-              Ver proyecto →
-            </a>
-            <span class="back-close-hint">Click para cerrar</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Proyecto 6 -->
-      <article class="project-card reveal" data-project>
-        <div class="project-card-inner">
-          <div class="project-face project-front">
-            <div class="project-cover">
-              <span class="cover-label">Open Source</span>
-              <span class="cover-icon">🧪</span>
-              <span class="cover-tag">Python · AWS</span>
-            </div>
-            <div class="project-front-info">
-              <h3>SciPy Lab</h3>
-              <p>Colección de notebooks y utilidades para análisis científico.</p>
-              <span class="click-hint">Click para ver más <span class="arrow">↻</span></span>
-            </div>
-          </div>
-          <div class="project-face project-back">
-            <div class="project-back-cover"><span>🧪</span></div>
-            <h3>SciPy Lab</h3>
-            <p>
-              Repositorio de notebooks y utilidades en Python para análisis científico
-              de datos: experimentación, limpieza, visualización y pipelines reproducibles
-              que se apoyan en servicios de AWS.
-            </p>
-            <a href="https://github.com/" target="_blank" rel="noopener" class="btn-view">
+            <a href="https://github.com/etherealWolfgs/aws_xideral/blob/main/Boto3_.html"
+               target="_blank" rel="noopener" class="btn-view">
               Ver proyecto →
             </a>
             <span class="back-close-hint">Click para cerrar</span>
@@ -1285,7 +1308,7 @@
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
           <span>🔗</span> LinkedIn
         </a>
-        <a href="https://github.com/" target="_blank" rel="noopener">
+        <a href="https://github.com/etherealWolfgs" target="_blank" rel="noopener">
           <span>🐙</span> GitHub
         </a>
         <a href="mailto:genaro@example.com">
@@ -1628,11 +1651,9 @@
   const projectCards = document.querySelectorAll('[data-project]');
   projectCards.forEach(function (card) {
     card.addEventListener('click', function (e) {
-      // Si el click viene de un enlace, no flipear
       if (e.target.closest('a')) return;
       card.classList.toggle('flipped');
     });
-    // Accesibilidad: tecla Enter / Espacio
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
     card.addEventListener('keydown', function (e) {
@@ -1670,7 +1691,6 @@
       item.classList.toggle('active', item.getAttribute('data-section') === id);
     });
 
-    // Mostrar la etiqueta durante 1 segundo al cambiar de sección
     const activeItem = document.querySelector('.side-nav-item.active');
     if (activeItem && currentActiveId !== null) {
       showLabelTemporarily(activeItem);
@@ -1697,7 +1717,6 @@
     setActive(currentId);
   }
 
-  // Al hacer click en la pestaña, mostrar etiqueta un momento
   sideItems.forEach(function (item) {
     item.addEventListener('click', function () {
       showLabelTemporarily(item);
